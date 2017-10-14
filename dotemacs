@@ -26,12 +26,12 @@
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
-(scroll-bar-mode -1)  
+(scroll-bar-mode -1)
 (menu-bar-mode -1)
-(blink-cursor-mode -1) 
-(tool-bar-mode -1) 
-(tooltip-mode -1) 
-(global-set-key [home] 'beginning-of-buffer) 
+(blink-cursor-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(global-set-key [home] 'beginning-of-buffer)
 (global-set-key [end] 'end-of-buffer)
 
 (when window-system
@@ -42,12 +42,12 @@
   (set-face-attribute 'mode-line nil :box 1)
   (set-face-foreground 'mode-line     fgcolor)
   (set-face-background 'mode-line     bgcolor))
-(if window-system 
+(if window-system
     (progn (set-background-color bgcolor)
 	   (set-foreground-color fgcolor)
-	   (set-face-foreground 'font-lock-string-face "darkviolet") 
+	   (set-face-foreground 'font-lock-string-face "darkviolet")
 	   (set-face-foreground 'font-lock-comment-face "darkgreen")
-	   (set-face-foreground 'font-lock-function-name-face "darkblue") 
+	   (set-face-foreground 'font-lock-function-name-face "darkblue")
 	   (set-face-foreground 'font-lock-keyword-face "darkblue")
 	   (set-face-foreground 'font-lock-builtin-face "darkorchid" );"darkslateblue")
 	   (set-face-foreground 'font-lock-variable-name-face "darkslateblue")
@@ -92,6 +92,7 @@
 (set-face-underline-p 'highlight nil) ; t for underline
 
 ;; White space mode
+(require 'whitespace)
 (set-face-attribute 'whitespace-line nil :background nil :foreground nil)
 (set-face-attribute 'whitespace-space nil :background nil :foreground "rgb:aa/aa/aa")
 (set-face-attribute 'whitespace-indentation nil :background nil :foreground "rgb:aa/aa/aa")
@@ -181,7 +182,7 @@
 (global-set-key [S-left]  'shrink-window-horizontally)
 (global-set-key [S-up]    'enlarge-window)
 (global-set-key [S-down]  'shrink-window)
-(global-set-key [S-next] 'previous-multiframe-window) 
+(global-set-key [S-next] 'previous-multiframe-window)
 (global-set-key [S-prior] 'other-window)
 
 ;; Buffer movement
@@ -209,7 +210,7 @@
 ; C-x r m add bookmark
 ; C-x r b jump to bookmark
 ; C-x r l list bookmark
-; M-x bookmark-delete  
+; M-x bookmark-delete
 
 ;; ------------------------------
 ;; F I L E   M O D E S
@@ -221,9 +222,9 @@
 (setq c-default-style
       '((java-mode . "bsd")
 	(c-mode . "bsd")
-	(go-mode . "bsd")        
+	(go-mode . "bsd")
 	(c++-mode . "bsd")
-	(other . "bsd"))) 
+	(other . "bsd")))
 
 (setq auto-mode-alist
       (append '(("\\.pad\\'" . pascal-mode)
@@ -248,6 +249,7 @@
 (setq css-indent-offset 4)
 (setq-default indent-tabs-mode nil) ; use spaces
 ;(setq indent-tabls-mode t) ; use tabs
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; -----------------------------
 ;; Personal remainder stuff
@@ -279,7 +281,7 @@
 
 ;; -----------------------------
 ;;  A U T O   G E N   S T U F F
-;; ----------------------------- 
+;; -----------------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
