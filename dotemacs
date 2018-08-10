@@ -5,6 +5,8 @@
     (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/php-mode"))
 (if (eq system-type 'usg-unix-v)
     (add-to-list 'load-path "/usr/share/emacs/site-lisp"))
+(if (eq system-type 'berkely-unix)
+    (add-to-list 'load-path "/usr/local/share/emacs/site-lisp"))
 ;; -----------------------------
 ;; E N C O D I N G   S T U F F
 ;; -----------------------------
@@ -204,8 +206,10 @@
   (setq mac-option-modifier 'none)
   (setq mac-command-modifier 'meta))
 ; use OSX cmd button as meta in *NIX
-(setq x-super-keysym 'meta)
+;(setq x-super-keysym 'meta)
 
+(if (eq system-type 'usg-unix-v)
+    (setq x-alt-keysym 'meta))
 ; Emacs std bindings
 ; C-x r m add bookmark
 ; C-x r b jump to bookmark
@@ -216,6 +220,7 @@
 ;; F I L E   M O D E S
 ;; ------------------------------
 (require 'go-mode)
+(autoload 'dtrace-script-mode "dtrace-script-mode" "Major mode for dtrace" t)
 ;(require 'yaml-mode)
 ;(autoload 'php-mode "php-mode" "Major mode for edit php" t)
 
@@ -223,6 +228,7 @@
       '((java-mode . "bsd")
 	(c-mode . "bsd")
 	(go-mode . "bsd")
+	(dtrace-script-mode . "bsd")
 	(c++-mode . "bsd")
 	(other . "bsd")))
 
@@ -231,6 +237,7 @@
 		("\\.spl\\'" . pascal-mode)
 		("\\.xhtml\\'" . nxml-mode)
 		("\\.go\\'" . go-mode)
+		("\\.d\\'" . dtrace-script-mode)
 		("\\.json\\'" . javascript-mode)
 		("\\.md\\'" . text-mode)
 	        ("\\.ici\\'" . c-mode ) )
