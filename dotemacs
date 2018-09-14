@@ -1,12 +1,12 @@
 ;; First things first!
-(if (eq system-type 'darwin)
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp")
-    (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
-    (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/php-mode"))
-(if (eq system-type 'usg-unix-v)
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp"))
-(if (eq system-type 'berkely-unix)
-    (add-to-list 'load-path "/usr/local/share/emacs/site-lisp"))
+(when (eq system-type 'darwin)
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp")
+  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/php-mode"))
+(when (eq system-type 'usg-unix-v)
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp"))
+(when (eq system-type 'berkely-unix)
+  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp"))
 ;; -----------------------------
 ;; E N C O D I N G   S T U F F
 ;; -----------------------------
@@ -201,15 +201,21 @@
 (global-set-key [C-mouse-4] 'down-a-lot)
 (global-set-key [C-mouse-5] 'up-a-lot)
 
-;; Mac os X stuff
+
+;; OS based configuration
+;; OSX
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'none)
   (setq mac-command-modifier 'meta))
 ; use OSX cmd button as meta in *NIX
 ;(setq x-super-keysym 'meta)
 
-(if (eq system-type 'usg-unix-v)
-    (setq x-alt-keysym 'meta))
+;; Solaris
+(when (eq system-type 'usg-unix-v)
+  (setq x-alt-keysym 'meta)
+  (setq find-program "gfind"))
+
+
 ; Emacs std bindings
 ; C-x r m add bookmark
 ; C-x r b jump to bookmark
