@@ -1,8 +1,7 @@
 ;; First things first!
 (when (eq system-type 'darwin)
   (add-to-list 'load-path "/usr/share/emacs/site-lisp")
-  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
-  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/php-mode"))
+  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp"))
 (when (eq system-type 'usg-unix-v)
   (add-to-list 'load-path "/usr/share/emacs/site-lisp"))
 (when (eq system-type 'berkely-unix)
