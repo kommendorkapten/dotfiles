@@ -3,20 +3,25 @@
 set -u
 set -e
 
-ssh-keygen -t ecdsa
+if [ ! -e ~/.ssh/id_ecdsa ]; then
+    ssh-keygen -t ecdsa
+fi
 
 OLD_DIR=`pwd`
-DIR=`mktemp`
+DIR=`mktemp -d`
 ME=`whoami`
 cd ${DIR}
 
 BUNDLE=https://github.com/kommendorkapten/configs/archive/refs/heads/master.zip
 SITE_LISP=/usr/local/share/emacs/site-lisp
 
+cd ${DIR}
 curl -LsO ${BUNDLE}
+unzip master.zip
+cd configs-master
 # Install configuration files
-cp ./.emacs ~/.emacs
-cp ./.profile ~/.profile
+cp .emacs ~/.emacs
+cp .profile ~/.profile
 
 su 
 
