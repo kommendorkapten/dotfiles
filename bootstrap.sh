@@ -27,7 +27,7 @@ su
 
 # install packages
 printf "Installing packages..."
-pkg_add -I packages.x11
+pkg_add -l packages.x11
 printf "done\n"
 
 # Go mode
