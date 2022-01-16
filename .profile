@@ -8,7 +8,8 @@ PS1='${USER}@`hostname -s`:$(
     [[ ${PWD#$HOME} != $PWD ]] && printf "%s" "~${PWD#$HOME}\$ " ||
     printf "%s" "${PWD}\$ "; fi)'
 
+GPG_TTY=$(tty)
 
-export PATH HOME TERM PS1
+export PATH HOME TERM PS1 GPG_TTY
 
 
