@@ -208,6 +208,7 @@
 ;; ------------------------------
 ;; F I L E   M O D E S
 ;; ------------------------------
+(require 'graphql-mode); https://raw.githubusercontent.com/davazp/graphql-mode/master/graphql-mode.el
 (require 'go-mode) ; https://github.com/dominikh/go-mode.el
 (require 'yaml-mode) ; https://github.com/yoshiki/yaml-mode
 (require 'terraform-mode) ; https://github.com/syohex/emacs-terraform-mode
@@ -233,6 +234,7 @@
                 ("\\.json\\'" . javascript-mode)
                 ("\\.md\\'" . markdown-mode)
                 ("\\.proto\\'" . protobuf-mode)
+                ("\\.graphql\\'" . graphql-mode)
                 ("Dockerfile\\'" . dockerfile-mode)
                 ("\\.ici\\'" . c-mode ) )
               auto-mode-alist))
