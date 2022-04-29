@@ -150,6 +150,7 @@
 (global-set-key [?\M-g] 'goto-line)
 (global-set-key [(control tab)] 'dabbrev-expand)
 (global-set-key [§]     'dabbrev-expand)
+(global-set-key [?\C-1] 'global-display-line-numbers-mode)
 (global-set-key [?\C-7] 'add-braces)
 (global-set-key [?\C-8] 'add-brackets)
 (global-set-key [?\C-9] 'add-parenthesis)
