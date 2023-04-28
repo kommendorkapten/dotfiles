@@ -46,6 +46,7 @@
 (if window-system
     (progn (set-background-color bgcolor)
            (set-foreground-color fgcolor)
+           (set-face-foreground 'font-lock-negation-char-face "darkblue")
            (set-face-foreground 'font-lock-string-face "darkviolet")
            (set-face-foreground 'font-lock-comment-face "darkgreen")
            (set-face-foreground 'font-lock-function-name-face "darkblue")
@@ -65,9 +66,10 @@
     (set-face-attribute 'mode-line nil :box 1)
     (set-face-background 'mode-line     "white")
     (set-face-foreground 'font-lock-comment-face "blue")
-    (set-foreground-color "magenta")))
+    (set-foreground-color "salmon")))
 (set-cursor-color "magenta")
 (transient-mark-mode t)
+(add-hook 'sh-mode-hook (lambda() (set-face-foreground 'sh-quoted-exec "blue")))
 ; Disable creation of new buffers
 (setq pop-up-windows nil)
 (setq split-width-threshold 1000000)
