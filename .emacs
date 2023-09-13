@@ -54,6 +54,8 @@
            (set-face-foreground 'font-lock-builtin-face "darkorchid" );"darkslateblue")
            (set-face-foreground 'font-lock-variable-name-face "darkslateblue")
            (set-face-foreground 'font-lock-type-face "blue")
+           (set-face-foreground 'font-lock-doc-markup-face "darkslateblue")
+           (set-face-foreground 'font-lock-constant-face "darkslateblue")
 
            (make-face-bold 'font-lock-function-name-face)
            (make-face-bold 'font-lock-variable-name-face)
@@ -69,7 +71,12 @@
     (set-foreground-color "salmon")))
 (set-cursor-color "magenta")
 (transient-mark-mode t)
-(add-hook 'sh-mode-hook (lambda() (set-face-foreground 'sh-quoted-exec "blue")))
+(add-hook 'sh-mode-hook (lambda()
+                          (progn (set-face-foreground 'sh-quoted-exec "blue")
+                                 (set-face-foreground 'sh-heredoc "darkblue"))))
+
+(add-hook 'terraform-mode-hook (lambda() (set-face-foreground 'terraform--resource-name-face "brown")))
+
 ; Disable creation of new buffers
 (setq pop-up-windows nil)
 (setq split-width-threshold 1000000)
