@@ -60,7 +60,6 @@
            (make-face-bold 'font-lock-function-name-face)
            (make-face-bold 'font-lock-variable-name-face)
            (make-face-italic 'font-lock-comment-face)
-           (set-face-underline-p 'font-lock-function-name-face t)
            (if (eq system-type 'darwin)
                (set-frame-font "-*-Source Code Pro ExtraLight-*-*-*-regular-12-*-*-*-*-*-*")
              (set-default-font "-*-Courier-Medium-R-Normal--12-*-*-*-M-*-ISO8859-1")))
@@ -85,7 +84,6 @@
 (global-hl-line-mode 1)
 (set-face-background 'highlight "rgb:99/99/bb")
 (set-face-foreground 'highlight nil)
-(set-face-underline-p 'highlight nil) ; t for underline
 
 ;; White space mode
 (require 'whitespace)
@@ -136,6 +134,16 @@
   (interactive)
   (princ "()" (current-buffer))
   (backward-char))
+
+(defun copilot-cli ()
+  "Launch Copilot CLI in vterm."
+  (interactive)
+  (vterm)
+  (vterm-send-string "copilot\n"))
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
 ;; --------------------------------------
 ;; K E Y   B I N D I N G S
@@ -209,6 +217,8 @@
   (setq x-alt-keysym 'meta)
   (setq find-program "gfind"))
 
+(global-set-key (kbd "C-c c c") 'copilot-cli)
+
 ; Emacs std bindings
 ; C-x r m add bookmark
 ; C-x r b jump to bookmark
@@ -242,6 +252,7 @@
                 ("\\.d\\'" . dtrace-script-mode)
                 ("\\.tf\\'" . terraform-mode)
                 ("\\.json\\'" . javascript-mode)
+                ("\\.ts\\'" . javascript-mode)
                 ("\\.md\\'" . markdown-mode)
                 ("\\.proto\\'" . protobuf-mode)
                 ("\\.graphql\\'" . graphql-mode)
@@ -278,9 +289,12 @@
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(global-font-lock-mode t nil (font-lock))
+ '(package-selected-packages '(flycheck flycheck-myp flycheck-mypy vterm))
  '(show-paren-mode t nil (paren))
- '(speedbar-frame-parameters (quote ((minibuffer) (width . 20) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t))))
- '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify))))
+ '(speedbar-frame-parameters
+   '((minibuffer) (width . 20) (border-width . 0) (menu-bar-lines . 0)
+     (tool-bar-lines . 0) (unsplittable . t)))
+ '(text-mode-hook '(turn-on-auto-fill text-mode-hook-identify)))
 
 
 (custom-set-faces
