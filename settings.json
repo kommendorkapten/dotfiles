@@ -1,0 +1,19 @@
+{
+    "workbench.colorTheme": "Solarized Light",
+    "git.openRepositoryInParentFolders": "never",
+    "git.autofetch": false,
+    "editor.minimap.enabled": false,
+    "editor.tabSize": 8,
+    "editor.renderWhitespace": "all",
+    "githubPullRequests.pullBranch": "never",
+    "files.eol": "\n",
+    "editor.occurrencesHighlight": "off",
+    "editor.selectionHighlight": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "extensions.ignoreRecommendations": true,
+    "makefile.configureOnOpen": false,
+    "docker.extension.dockerEngineAvailabilityPrompt": false,
+    "chat.tools.terminal.autoApprove": {
+        "go": true
+    }
+}
