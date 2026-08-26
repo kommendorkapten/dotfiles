@@ -3,6 +3,8 @@
 set -u
 set -e
 
+[ "$(uname -s)" = "OpenBSD" ] || exit 0
+
 if [ ! -e ~/.ssh/id_ecdsa ]; then
     ssh-keygen -t ecdsa
 fi
@@ -23,7 +25,7 @@ cd configs-master
 cp .emacs ~/.emacs
 cp .profile ~/.profile
 
-su 
+su
 
 # install packages
 printf "Installing packages..."
